@@ -57,7 +57,7 @@ print.lazy_query_base_local <- function(x, ...) {
 
 #' @export
 sql_build.lazy_query_base_remote <- function(op, con, ...) {
-  op$x
+  structure(op$x, vars = op$vars)
 }
 
 #' @export

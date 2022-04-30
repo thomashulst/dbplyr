@@ -177,7 +177,13 @@ sql_render.ident <- function(query, con = NULL, ..., subquery = FALSE, lvl = 0, 
   if (subquery) {
     query
   } else {
-    dbplyr_query_select(con, sql("*"), query, lvl = lvl)
+    vars <- attr(query, "vars")
+    if (is.null(vars)) {
+      select <- sql("*")
+    } else {
+      select <- ident(vars)
+    }
+    dbplyr_query_select(con, select, query, lvl = lvl)
   }
 }
 

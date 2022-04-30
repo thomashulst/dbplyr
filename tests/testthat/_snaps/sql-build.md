@@ -1,8 +1,16 @@
-# rendering table wraps in SELECT *
+# rendering table wraps in SELECT x
 
     Code
       out %>% sql_render()
     Output
-      <SQL> SELECT *
+      <SQL> SELECT `x`
       FROM `test-sql-build`
+
+---
+
+    Code
+      out %>% sql_render()
+    Output
+      <SQL> SELECT `do`, `not`, `exist`
+      FROM `bogus`
 
